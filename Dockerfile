@@ -8,8 +8,11 @@ RUN git clone https://mbradle@bitbucket.org/mbradle/single_zone.git
 
 WORKDIR /my-projects/single_zone
 
-ARG DIRECTORY=/output_directory
-ENV VAR_DIR=$DIRECTORY
+ARG INPUT_DIRECTORY=/input_directory
+ENV IN_VAR_DIR=$INPUT_DIRECTORY
+
+ARG OUTPUT_DIRECTORY=/output_directory
+ENV OUT_VAR_DIR=$OUTPUT_DIRECTORY
 
 RUN make single_zone_network
 RUN make data
