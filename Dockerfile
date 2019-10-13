@@ -3,6 +3,9 @@ FROM mbradle/docker_wn_user
 ENV NAME VAR
 ENV NAME HEADER_COPY_DIRECTORY
 
+ARG WN_USER
+ENV WN_USER=$WN_USER
+
 WORKDIR /my-projects
 
 RUN git clone https://mbradle@bitbucket.org/mbradle/single_zone.git
