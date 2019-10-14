@@ -8,6 +8,8 @@ ENV WN_USER=$WN_USER
 
 WORKDIR /my-projects
 
+RUN git -C ${WN_USER_TARGET} pull
+
 RUN git clone https://mbradle@bitbucket.org/mbradle/single_zone.git
 
 WORKDIR /my-projects/single_zone
