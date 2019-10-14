@@ -6,9 +6,6 @@ ENV NAME HEADER_COPY_DIRECTORY
 ARG WN_USER
 ENV WN_USER=$WN_USER
 
-ARG INPUT_DIRECTORY=/input_directory
-ARG OUTPUT_DIRECTORY=/output_directory
-
 WORKDIR /my-projects
 
 RUN git clone https://mbradle@bitbucket.org/mbradle/single_zone.git
