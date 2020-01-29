@@ -1,7 +1,9 @@
+--t9_0 10.
+--rho_0 1.e7
 --tau 0.1
---network_xml ../nucnet-tools-code/data_pub/my_net.xml
+--network_xml /input_directory/data_pub/my_net.xml
 --iterative_solver gmres
 --iterative_t9 2
---nuc_xpath "[z <= 15]"
---output_xml /output_directory/out2.xml
---init_mass_frac "{h1, 0.5}" "{n, 0.5}"
+--nuc_xpath "[z <= 30]"
+--output_xml /output_directory/out.xml
+--init_mass_frac "{h1; 0.5}" "{n; 0.5}"
