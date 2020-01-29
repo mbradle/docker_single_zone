@@ -46,7 +46,7 @@ The output will be in the directory work/output.  One can add options into the r
 
 **docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone**
 
-This calculation cuts of the expansion after 1 second instead of the default 1.e6 seconds.
+This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
 <!--
 To compile with a different master.h, first get the master.h:
