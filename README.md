@@ -21,8 +21,11 @@ Now build the image.  Type:
 Now create a directory for the input and output.  Type:
 
 **mkdir work**
+
 **mkdir work/input**
+
 **mkdir work/output**
+
 **cp input/run.rsp to work/input/**
 
 Now download the necessary data.  First, record the current location.  Type
