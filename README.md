@@ -1,13 +1,7 @@
 # docker_single_zone
-Webnucleo single zone docker
+This is the Webnucleo single-zone reaction network docker image repository.
 
-<!--
-Tags:
-
-- default: made with default master.h
--->
-
-Steps to build and run the docker image.
+# Steps to build and run the default docker image.
 
 First clone the repository.  Type:
 
@@ -48,18 +42,14 @@ The output will be in the directory work/output.  One can add options into the r
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
-<!--
-To compile with a different master.h, first get the master.h:
+# Steps to build with a different master.h file.
 
-- docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e HEADER_COPY_DIRECTORY=/output_directory single_zone
+First, download the default master.h to the output directory.  Type:
 
-Copy the master.h to this directory:
-
-- cp work/output/master.h .
+**docker run -it -v PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone**
 
 Edit master.h.  Now rebuild, but set the WN_USER flag:
 
-- docker build -t single_zone --build-arg WN_USER=1 .
+**docker build -t single_zone --build-arg WN_USER=1 .**
 
 Edit work/input/run.rsp appropriately.  Then run as before.
--->
