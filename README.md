@@ -38,9 +38,13 @@ Now edit work/input/run.rsp.  Note that input can also be input through the VAR,
 
 Run the calculation.  For example:
 
-- docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone
+- docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone
 
-The output will be in the directory work/output.
+The output will be in the directory work/output.  One can add options into the response file run.rsp or directly into the command line:
+
+- docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone
+
+This calculation cuts of the expansion after 1 second instead of the default 1.e6 seconds.
 
 <!--
 To compile with a different master.h, first get the master.h:
