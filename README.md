@@ -1,9 +1,11 @@
 # docker_single_zone
 Webnucleo single zone docker
 
+<!--
 Tags:
 
 - default: made with default master.h
+-->
 
 Steps to build and run the docker image.
 
@@ -40,6 +42,7 @@ Run the calculation.  For example:
 
 The output will be in the directory work/output.
 
+<!--
 To compile with a different master.h, first get the master.h:
 
 - docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e HEADER_COPY_DIRECTORY=/output_directory single_zone
@@ -53,3 +56,4 @@ Edit master.h.  Now rebuild, but set the WN_USER flag:
 - docker build -t single_zone --build-arg WN_USER=1 .
 
 Edit work/input/run.rsp appropriately.  Then run as before.
+-->
