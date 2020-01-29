@@ -16,6 +16,7 @@ First clone the repository.  Type:
 Now build the image.  Type:
 
 **cd docker_single_zone**
+
 **docker build -t single_zone .**
 
 Now create a directory for the input and output.  Type:
