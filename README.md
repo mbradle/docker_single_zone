@@ -21,7 +21,7 @@ Now create a directory for the input and output.  Type:
 
 **mkdir work/output**
 
-**cp input/run.rsp to work/input/**
+**cp input/run.rsp work/input/**
 
 Now download the necessary data.  First, record the current location.  Type
 
