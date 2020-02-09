@@ -27,18 +27,17 @@ Now download the necessary data.  First, record the current location.  Type
 
 **pwd**
 
-Replace PWD in the instructions below with the string that is returned by
-this command.  Now download the data.  Type:
+In the instructions below, you should simply be able to use the commands verbatim (most likely, you will simply cut and paste).  If not, replace the *$PWD* present with the string that is returned by the *pwd* command.  Now download the data.  Type:
 
-**docker run -it -v PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
+**docker run -it -v $PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
 
 Now edit work/input/run.rsp.  Run the calculation.  For example, type:
 
-**docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone**
+**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone**
 
 The output will be in the directory work/output.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
 
-**docker run -it -v PWD/work/input:/input_directory -v PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone**
+**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone**
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
@@ -64,7 +63,7 @@ The input to *VAR* is between quotes to ensure that it is recognized as a single
 
 First, download the default master.h to the output directory.  Type:
 
-**docker run -it -v PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone**
+**docker run -it -v $PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone**
 
 Edit master.h.  Now rebuild, but set the WN_USER flag:
 
