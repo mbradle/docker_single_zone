@@ -33,7 +33,7 @@ Now download the necessary data.  First, record the current location.  Type
 
 **pwd**
 
-In the instructions below, you should simply be able to use the commands verbatim (most likely, you will simply cut and paste).  If not, replace the *$PWD* present with the string that is returned by the *pwd* command.  Now download the data.  Type:
+In the instructions below, you should simply be able to use the commands verbatim (most likely, you will simply cut and paste).  If that does not work, replace the *$PWD* present with the string that is returned by the *pwd* command.  Now download the data.  Type:
 
 **docker run -it -v $PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
 
