@@ -42,6 +42,24 @@ The output will be in the directory work/output.  One can add options into the r
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
+# Steps to list possible options or an example execution.
+
+To get a help statement for a single-zone network docker image, type:
+
+**docker run -e VAR=--help single_zone**
+
+The output lists a usage statement for the underlying single-zone network code.  Any of the suggested commands can be entered as input through the *VAR* variable.  For example, you can type:
+
+**docker run -e VAR=--example single_zone**
+
+to get the example execution (of the underlying single-zone network code).  The options in the example execution would be added to the response file or the command line (through *VAR*).  To get the listing of all possible options, type:
+
+**docker run -e VAR="--prog all" single_zone**
+
+The input to *VAR* is between quotes to ensure that it is recognized as a single input string.  To get options for a particular class, select that class as input to the *program_options* option.  For example, type:
+
+**docker run -e VAR="--prog network_time" single_zone**
+
 # Steps to build with a different master.h file.
 
 First, download the default master.h to the output directory.  Type:
