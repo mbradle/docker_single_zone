@@ -7,9 +7,15 @@ First clone the repository.  Type:
 
 **git clone http://github.com/mbradle/docker_single_zone**
 
-Now build the image.  Type:
+Now change into the cloned directory.  Type:
 
 **cd docker_single_zone**
+
+If you have previously cloned the repository, you can update by typing:
+
+**git pull**
+
+Now build the image.  Type:
 
 **docker build -t single_zone .**
 
@@ -31,11 +37,11 @@ In the instructions below, you should simply be able to use the commands verbati
 
 **docker run -it -v $PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
 
-Now edit work/input/run.rsp.  Run the calculation.  For example, type:
+Now edit *work/input/run.rsp*.  Run the calculation.  For example, type:
 
 **docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone**
 
-The output will be in the directory work/output.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
+The output will be in the directory *work/output*.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
 
 **docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone**
 
@@ -61,12 +67,51 @@ The input to *VAR* is between quotes to ensure that it is recognized as a single
 
 # Steps to build with a different master.h file.
 
-First, download the default master.h to the output directory.  Type:
+First, it's useful to prune any unused or stopped containers by typing:
+
+**docker prune system -a**
+
+Next, download the default *master.h* to the *$PWD* directory.  Type:
 
 **docker run -it -v $PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone**
 
-Edit master.h.  Now rebuild, but set the WN_USER flag:
+Edit *master.h*.  Now rebuild, but set the WN_USER flag:
 
-**docker build -t single_zone --build-arg WN_USER=1 .**
+**docker build -t single_zone:tag --build-arg WN_USER=1 .**
 
-Edit work/input/run.rsp appropriately.  Then run as before.
+where *tag* is a tag to distinguish the new image from the default.  You can now edit work/input/run.rsp appropriately.  Then run as before using the new tag.
+
+As an example, edit *master.h*.  In particular, change the lines in the file that read
+
+     #include "hydro/single_zone/standard/detail/default.hpp"
+     #include "hydro/single_zone/standard/hydro.hpp"
+
+to instead read
+
+     #include "hydro/single_zone/trajectory/detail/time_t9_rho.hpp"
+     #include "hydro/single_zone/trajectory/hydro.hpp"
+     
+and then run
+
+**docker build -t single_zone:time_t9_rho --build-arg WN_USER=1 .**
+
+This new docker image will run a calculation in which the temperature and density are determined by interpolation from a file.  Create a file (call it *my_file.txt*) in the *work/input* directory that reads, for example
+
+     0  10.  1.e8
+     1  5.   1.e7
+     2  5.   1.e7
+     3  2.   1.e4
+     4  2.   1.e4
+     5  0.1  1.e2
+
+This file gives the time (in seconds in column 1), the t9 (temperature in billions of K in column 2), and the density (in g/cc in column 3).  Now edit the file *work/input/run.rsp* to read
+
+    --interp_file /input_directory/my_file.txt
+    --network_xml /input_directory/data_pub/my_net.xml
+    --nuc_xpath "[z <= 30]" --xml_steps 2
+    --output_xml /output_directory/out.xml
+    --init_mass_frac "{h1; 0.5}" "{n; 0.5}"
+
+Now run the code by typing:
+
+**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone:time_t9_rho**
