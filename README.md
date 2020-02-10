@@ -17,7 +17,9 @@ If you have previously cloned the repository, you can update by typing:
 
 Now build the image.  Type:
 
-**docker build -t single_zone .**
+**docker build -t single_zone:default .**
+
+The docker image that gets built is *single_zone:default*.  The *:default* is a tag that allows you to distinguish other single zone images.  Of course you can provide your own name for both the image and the tag.
 
 Now create a directory for the input and output.  Type:
 
@@ -39,11 +41,11 @@ In the instructions below, you should simply be able to use the commands verbati
 
 Now edit *work/input/run.rsp*.  Run the calculation.  For example, type:
 
-**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone**
+**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone:default**
 
 The output will be in the directory *work/output*.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
 
-**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone**
+**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone:default**
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
@@ -51,19 +53,19 @@ This calculation cuts off the expansion after 1 second instead of the default 1.
 
 To get a help statement for a single-zone network docker image, type:
 
-**docker run -e VAR=--help single_zone**
+**docker run -e VAR=--help single_zone:default**
 
 The output lists a usage statement for the underlying single-zone network code.  Any of the suggested commands can be entered as input through the *VAR* variable.  For example, you can type:
 
-**docker run -e VAR=--example single_zone**
+**docker run -e VAR=--example single_zone:default**
 
 to get the example execution (of the underlying single-zone network code).  The options in the example execution would be added to the response file or the command line (through *VAR*).  To get the listing of all possible options, type:
 
-**docker run -e VAR="--prog all" single_zone**
+**docker run -e VAR="--prog all" single_zone:default**
 
 The input to *VAR* is between quotes to ensure that it is recognized as a single input string.  To get options for a particular class, select that class as input to the *program_options* option.  For example, type:
 
-**docker run -e VAR="--prog network_time" single_zone**
+**docker run -e VAR="--prog network_time" single_zone:default**
 
 # Steps to build with a different master.h file.
 
@@ -71,9 +73,15 @@ First, it's useful to prune any dangling containers by typing:
 
 **docker system prune**
 
+The command
+
+**docker system prune -a**
+
+will clear out everything and start over if you prefer.
+
 Next, download the default *master.h* to the *$PWD* directory.  Type:
 
-**docker run -it -v $PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone**
+**docker run -it -v $PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone:default**
 
 Edit *master.h*.  Now rebuild, but set the WN_USER flag:
 
