@@ -67,9 +67,9 @@ The input to *VAR* is between quotes to ensure that it is recognized as a single
 
 # Steps to build with a different master.h file.
 
-First, it's useful to prune any unused or stopped containers by typing:
+First, it's useful to prune any dangling containers by typing:
 
-**docker system prune -a**
+**docker system prune**
 
 Next, download the default *master.h* to the *$PWD* directory.  Type:
 
