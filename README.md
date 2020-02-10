@@ -123,3 +123,15 @@ This file gives the time (in seconds in column 1), the t9 (temperature in billio
 Now run the code by typing:
 
 **docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone:time_t9_rho**
+
+# How to force a rebuild of one of your images.
+
+If you suspect that the underlying code has been updated since your latest docker build, you can force a rebuild by using the *--no-cache* option.  For example, you can type:
+
+**docker build --no-cache -t single_zone:default .**
+
+This will force docker to pull any new changes to the underlying codes down before rebuilding.
+
+# Using Docker Hub for your images.
+
+Once you have an image that you would like to share with your collaborators, you can set up a repository on [Docker Hub](https://hub.docker.com).  You can push images to the repository that others can then pull down and use.  This [site](https://runnable.com/docker/using-docker-hub) provides more information.
