@@ -69,7 +69,7 @@ The input to *VAR* is between quotes to ensure that it is recognized as a single
 
 First, it's useful to prune any unused or stopped containers by typing:
 
-**docker prune system -a**
+**docker system prune -a**
 
 Next, download the default *master.h* to the *$PWD* directory.  Type:
 
