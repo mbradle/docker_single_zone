@@ -18,4 +18,4 @@ COPY run_single_zone.sh master.[h] /my-projects/single_zone/
 
 RUN make single_zone_network
 
-CMD ["/bin/sh", "/my-projects/single_zone/run_single_zone.sh"]
+CMD if [ "$HEADER_COPY_DIRECTORY" ]; then cp /my-projects/single_zone/default/master.h ${HEADER_COPY_DIRECTORY}/master.h; else ./single_zone_network $VAR ; fi
