@@ -14,7 +14,7 @@ RUN git clone https://mbradle@bitbucket.org/mbradle/single_zone.git
 
 WORKDIR /my-projects/single_zone
 
-COPY master.[h] /my-projects/single_zone/
+COPY Dockerfile master.[h] /my-projects/single_zone/
 
 RUN make single_zone_network
 
