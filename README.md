@@ -49,6 +49,12 @@ The output will be in the directory *work/output*.  One can add options into the
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
+Linux users may find they need to prepend *sudo* to run docker.  For example, they may need to type:
+
+**sudo docker run -it -v $PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
+
+Here are some [notes](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo) on running without *sudo* that may be of interest.
+
 # Steps to list possible options or an example execution.
 
 To get a help statement for a single-zone network docker image, type:
