@@ -87,7 +87,7 @@ will clear out everything and start over if you prefer.
 
 Next, download the default *master.h* to the *$PWD* directory.  Type:
 
-**docker run -it -v $PWD:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone:default**
+**docker run -it -v ${PWD}:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone:default**
 
 Edit *master.h*.  Now rebuild, but set the WN_USER flag:
 
@@ -128,7 +128,7 @@ This file gives the time (in seconds in column 1), the t9 (temperature in billio
 
 Now run the code by typing:
 
-**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone:time_t9_rho**
+**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone:time_t9_rho**
 
 # How to force a rebuild of one of your images.
 
