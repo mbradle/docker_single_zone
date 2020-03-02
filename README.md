@@ -35,23 +35,23 @@ Now download the necessary data.  First, record the current location.  Type
 
 **pwd**
 
-In the instructions below, you should simply be able to use the commands verbatim (most likely, you will simply cut and paste).  If that does not work, replace the *$PWD* present with the string that is returned by the *pwd* command.  Now download the data.  Type:
+In the instructions below, you should simply be able to use the commands verbatim (most likely, you will simply cut and paste).  If that does not work, replace the *${PWD}* present with the string that is returned by the *pwd* command.  Now download the data.  Type:
 
-**docker run -it -v $PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
+**docker run -it -v ${PWD}/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
 
 Now edit *work/input/run.rsp*.  Run the calculation.  For example, type:
 
-**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone:default**
+**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone:default**
 
 The output will be in the directory *work/output*.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
 
-**docker run -it -v $PWD/work/input:/input_directory -v $PWD/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone:default**
+**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone:default**
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
 Linux users may find they need to prepend *sudo* to run docker.  For example, they may need to type:
 
-**sudo docker run -it -v $PWD/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
+**sudo docker run -it -v ${PWD}/work/input/data_pub:/data_directory -e VAR=data webnucleo/data_download**
 
 Here are some [notes](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo) on running without *sudo* that may be of interest.
 
