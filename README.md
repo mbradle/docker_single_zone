@@ -1,5 +1,9 @@
 # docker_single_zone
-This is the Webnucleo single-zone reaction network docker image repository.
+This is the Webnucleo single-zone reaction network docker image repository.  You first need to have installed [docker](https://runnable.com/docker/getting-started/) and be able to run it. You can verify that docker is properly installed, for example, by running the Hello, World image in an appropriate shell.  To do so, type:
+
+**docker run hello-world**
+
+With docker correctly installed, you can build and run the single-zone network image. 
 
 # Steps to build and run the default docker image.
 
