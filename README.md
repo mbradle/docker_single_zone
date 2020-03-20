@@ -49,7 +49,7 @@ Now edit *work/input/run.rsp*.  Run the calculation.  For example, type:
 
 The output will be in the directory *work/output*.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
 
-**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR="@/input_directory/run.rsp --tend 1." single_zone:default**
+**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR="@/input_directory/run.rsp --t_end 1." single_zone:default**
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
