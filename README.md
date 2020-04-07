@@ -89,6 +89,10 @@ The command
 
 will clear out everything and start over if you prefer.
 
+Be sure that you have the *single_zone:default* image available.  Type:
+
+**docker build -t single_zone:default .**
+
 Next, download the default *master.h* to the *$PWD* directory.  Type:
 
 **docker run -it -v ${PWD}:/header_directory -e HEADER_COPY_DIRECTORY=/header_directory single_zone:default**
