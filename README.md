@@ -45,11 +45,13 @@ In the instructions below, you should simply be able to use the commands verbati
 
 Now edit *work/input/run.rsp*.  Run the calculation.  For example, type:
 
-**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone:default**
+**docker run -it -v \`PWD\`/work/input:/input_directory -v \`PWD\`/work/output:/output_directory -e VAR=@/input_directory/run.rsp single_zone:default**
 
-The output will be in the directory *work/output*.  One can add options into the response file run.rsp or directly into the command line.  For example, type:
+The output will be in the directory *work/output*.  Note that *\`PWD\`* is equivalent to *${PWD}*.
 
-**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR="@/input_directory/run.rsp --t_end 1." single_zone:default**
+One can add options into the response file run.rsp or directly into the command line.  For example, type:
+
+**docker run -it -v \`PWD\`/work/input:/input_directory -v \`PWD\`/work/output:/output_directory -e VAR=\"@/input_directory/run.rsp --t_end 1.\" single_zone:default**
 
 This calculation cuts off the expansion after 1 second instead of the default 1.e6 seconds.
 
@@ -136,7 +138,7 @@ This file gives the time (in seconds in column 1), the t9 (temperature in billio
 
 Now run the code by typing:
 
-**docker run -it -v ${PWD}/work/input:/input_directory -v ${PWD}/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone:time_t9_rho**
+**docker run -it -v \`PWD\`/work/input:/input_directory -v \`PWD\`/work/output:/output_directory -e VAR="@/input_directory/run.rsp" single_zone:time_t9_rho**
 
 # How to force a rebuild of one of your images.
 
